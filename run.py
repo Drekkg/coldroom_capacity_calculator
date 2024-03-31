@@ -26,13 +26,18 @@ title = pyfiglet.figlet_format(" * * * *", font = "5lineoblique" )
 
 print(f"{title}* Welcome to the Coldroom Calculator * \n")
 
-def validate_email():
+def check_email_registered():
     while True:
-    
-        email_address = SHEET.worksheet("email")
-        mail = email_address.col_values(1)
-        print(" \n")
-  
+        # try statement to check if worksheet exists otherwise break and show error message
+        try:
+            email_address = SHEET.worksheet("emailx")
+            mail = email_address.col_values(1)
+            
+        except:
+            print("Sorry an error has occurred.\n Please contact support.\n www.ccc@cold-calc.freeze")
+            break
+            
+        # get user email and check if they are registered, quit or open the register module
         user_email = input("Please enter your registered email address, \n 'r' to register or 'q' to quit: \n")
         if user_email in mail:
             print("Loading Projects......\n")
@@ -48,4 +53,4 @@ def validate_email():
             
        
     
-validate_email()
+check_email_registered()
