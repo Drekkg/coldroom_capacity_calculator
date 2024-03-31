@@ -77,23 +77,26 @@ def register_user():
     """
     clear()
     while True:
-        new_user_email = input("Please enter a valid email address: ")
+        new_user_email = input("Please enter your email address: ")
         try:
            valid_new_user_email = validate_email(new_user_email,check_deliverability = False)
            print(f"{valid_new_user_email } is a valid email.")
-           create_new_user_name()
+           SHEET.worksheet("email").append_row([new_user_email])
+           create_new_user_name(new_user_email)
            break
            
         except EmailNotValidError as e:  
             print(f"{new_user_email} is not a valid email address.")    
                 
-def create_new_user_name():
+def create_new_user_name(new_email):
     while True:
-        new_user_name = input("Please enter a new user name(no more than 8 characters): ")
-        print(len(new_user_name))
-        
-        if len(new_user_name) < 8:
-            print("ok")
+        new_user_name = [input("Please enter a new user name(no more than 8 characters): ")]
+        if len(new_user_name) <= 8:
+            SHEET.add_worksheet(title = new_email, rows=100, cols=20)
+            worksheet_to_update = SHEET.worksheet(new_email)
+            worksheet_to_update.append_row(new_user_name)
+           
+           
             break
         else:
              print("Your username cannot be bigger than 8 characters!")
