@@ -41,6 +41,9 @@ def clear():
     os.system("cls" if os.name == "nt" else "clear")
 
 def check_email_registered():
+    """
+    Checks if user is registered
+    """
     while True:
         # try statement to check if worksheet exists otherwise break and show error message
         # including support website link
@@ -69,16 +72,31 @@ def check_email_registered():
 
             
 def register_user():
+    """
+    registers new user email
+    """
     clear()
     while True:
         new_user_email = input("Please enter a valid email address: ")
         try:
            valid_new_user_email = validate_email(new_user_email,check_deliverability = False)
            print(f"{valid_new_user_email } is a valid email.")
+           create_new_user_name()
+           break
            
         except EmailNotValidError as e:  
             print(f"{new_user_email} is not a valid email address.")    
                 
-           
+def create_new_user_name():
+    while True:
+        new_user_name = input("Please enter a new user name(no more than 8 characters): ")
+        print(len(new_user_name))
+        
+        if len(new_user_name) < 8:
+            print("ok")
+            break
+        else:
+             print("Your username cannot be bigger than 8 characters!")
+                   
     
 check_email_registered()
