@@ -11,6 +11,9 @@ from google.oauth2.service_account import Credentials
 # import os library to clear screen in console
 import os
 
+# import email validator
+from email_validator import validate_email, EmailNotValidError
+
 # create the scope for the connected APIs
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -68,7 +71,14 @@ def check_email_registered():
 def register_user():
     clear()
     while True:
-        input("registering")
+        new_user_email = input("Please enter a valid email address: ")
+        try:
+           valid_new_user_email = validate_email(new_user_email,check_deliverability = False)
+           print(f"{valid_new_user_email } is a valid email.")
+           
+        except EmailNotValidError as e:  
+            print(f"{new_user_email} is not a valid email address.")    
+                
            
     
 check_email_registered()
