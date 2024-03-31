@@ -6,4 +6,11 @@ __pycache__/
 *.py[cod]
 node_modules/
 .github/
+<<<<<<< HEAD
 CREDS.json
+=======
+<<<<<<< HEAD
+=======
+creds.json
+>>>>>>> d861048 (Update .gitignore to reflect changes in file name for credentials file)
+>>>>>>> 089c618 (Update .gitignore to reflect changes in file name for credentials file)
