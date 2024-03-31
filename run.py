@@ -7,6 +7,10 @@ import pyfiglet
 import gspread
 from google.oauth2.service_account import Credentials
 
+
+# import os library to clear screen in console
+import os
+
 # create the scope for the connected APIs
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -26,11 +30,19 @@ title = pyfiglet.figlet_format(" * * * *", font = "5lineoblique" )
 
 print(f"{title}* Welcome to the Coldroom Calculator * \n")
 
+
+def clear():
+    """
+    Clear screen function
+    """
+    os.system("cls" if os.name == "nt" else "clear")
+
 def check_email_registered():
     while True:
         # try statement to check if worksheet exists otherwise break and show error message
+        # including support website link
         try:
-            email_address = SHEET.worksheet("emailx")
+            email_address = SHEET.worksheet("email")
             mail = email_address.col_values(1)
             
         except:
@@ -47,10 +59,16 @@ def check_email_registered():
             break
         elif user_email == "r":
             print("Loading the register page.......")
+            register_user()
             break
         else:
             print(f"{user_email} is not registered. \n Please try again\n")
+
             
-       
+def register_user():
+    clear()
+    while True:
+        input("registering")
+           
     
 check_email_registered()
