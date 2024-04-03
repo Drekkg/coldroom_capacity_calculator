@@ -69,7 +69,7 @@ def load_project(user_email):
                 break
             elif new_type.strip() == 'b':
                 new_type = "Beverages"
-                temp = "5"
+                temp = "6"
                 break
             elif new_type.strip() == 'd':
                 new_type = "Deepfreeze"
@@ -86,11 +86,43 @@ def load_project(user_email):
         new_row.append(new_insulation)
         new_floor = insulsulated_floor()
         new_row.append(new_floor)
+        capacity = calculate_capacity(new_type, new_insulation, new_volume, new_floor)
+        new_row.append(str(capacity) +" kW")
         
         
         
         
         project_sheet.append_row(new_row)
+        
+def calculate_capacity(new_type, new_insulation, new_volume, new_floor):
+    print("Calculating Capacity....")
+
+    temp_ranges = {"Kitchen": 2, "Beverages": 6, "Deepfreeze": -18}
+    base_and_steps = {(6, "70mm"): (455, 5.4), (2, "70mm"): (565, 6.4), (-18, "100mm"): (630, 7.2), 
+                      (6, "100mm"): (420, 5.4), (2, "100mm"): (509, 5.8)}
+
+  
+
+    temp_range = temp_ranges[new_type]
+    if new_type == "Deepfreeze":
+        new_insulation = "100mm"
+
+    if (temp_range, new_insulation) not in base_and_steps:
+        print(f"Unknown temp range and insulation combination: {temp_range}, {new_insulation}")
+        return
+
+    base, step = base_and_steps[(temp_range, new_insulation)]
+    capacity = base + (step * (new_volume * 10))
+    
+    if new_floor == "No":
+        capacity *= 1.2
+
+    print(f"The required capacity for the {new_type} Coldroom is {capacity} kW")
+    return capacity
+    
+
+
+
         
 def insulsulated_floor():
     print("* Please choose if the Coldroom has an Insulated Floor *")
@@ -271,7 +303,7 @@ def create_new_user_name(new_email):
             print(f"{new_user_name} welcome to the Coldroom Capacity Calculator. ")
             print(f"{new_email} is your registered email.")
             print("Loading Projects......")
-            load_project(new_email, new_user_name)
+            load_project(new_email)
             break
         else:
              print("Your username cannot be bigger than 8 characters!")
