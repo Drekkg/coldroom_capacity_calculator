@@ -7,6 +7,7 @@ from google.oauth2.service_account import Credentials
 import os
 from email_validator import validate_email, EmailNotValidError
 from colorama import Fore, Style
+import pprint
 
 
 # create the scope for the connected APIs
@@ -56,6 +57,10 @@ def load_project(user_email):
         print(Fore.BLUE + f"{title}" + Style.RESET_ALL + "* Welcome to your project Page * \n") 
         print(f"{user_email} Project Page")
         project_sheet = SHEET.worksheet(user_email)
+        project_display = project_sheet.get_all_values()
+        print("Your Projects: \n")  
+        for project in project_display:
+            print(project)
         
         # projects = project_sheet.col_values(2)
         new_row = [""]
@@ -117,7 +122,7 @@ def calculate_capacity(new_type, new_insulation, new_volume, new_floor):
     if new_floor == "No":
         capacity *= 1.2
 
-    print(f"The required capacity for the {new_type} Coldroom is {capacity} kW")
+    print(f"The required capacity for the {new_type} Coldroom with a Volume of {new_volume}m³ is {capacity} kW")
     return capacity
     
 
