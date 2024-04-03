@@ -121,6 +121,7 @@ def calculate_capacity(new_type, new_insulation, new_volume, new_floor):
     
     if new_floor == "No":
         capacity *= 1.2
+    capacity = round(capacity, 1)
 
     print(f"The required capacity for the {new_type} Coldroom with a Volume of {new_volume}m³ is {capacity} kW")
     return capacity
@@ -173,7 +174,7 @@ def calc_volume():
         except ValueError as e:
             print(f"{e} is not a number. Please enter a valid number")
     
-    return height * width * length
+    return round(height * width * length, 1)
     
         
 
