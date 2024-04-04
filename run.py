@@ -24,6 +24,7 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("coldroom_capacity_calculator")
 
 email_address = SHEET.worksheet("email").get_all_values()
+space = "     "
 
 
 
@@ -53,21 +54,21 @@ def load_project(user_email):
         """
         clear()
        
-        title = pyfiglet.figlet_format(" * * * *", font = "5lineoblique" ) 
-        print(Fore.BLUE + f"{title}" + Style.RESET_ALL + "* Welcome to your project Page * \n") 
+        title = pyfiglet.figlet_format(" * * * * * * * *", font = "5lineoblique" ) 
+        print(Fore.BLUE + f"{space}{title}" + Style.RESET_ALL + " * Welcome to your project Page * \n") 
         print(f"{user_email} Project Page")
         project_sheet = SHEET.worksheet(user_email)
         project_display = project_sheet.get_all_values()
-        print("Your Projects: \n")  
+        print(f"{space}Your Projects: \n")  
         for project in project_display:
             print(project)
         
         # projects = project_sheet.col_values(2)
         new_row = [""]
-        new_name = input("Please enter a new project name:  ")
+        new_name = input(f"{space}Please enter a new project name:  ")
         new_row.append(new_name)
         while True:
-            new_type = input("Please enter the Type.\n [k] for Kitchen 2°C\n [b] for Beverages 6°C or \n [d] for Deepfreeze\n")
+            new_type = input(f"{space}Please enter the Type.\n [k] for Kitchen 2°C\n [b] for Beverages 6°C or \n [d] for Deepfreeze\n")
             if new_type.strip() == 'k':
                 new_type = "Kitchen"
                 temp = "2"
@@ -81,7 +82,7 @@ def load_project(user_email):
                 temp = "-18"
                 break
             else:
-                print("Please enter a valid type")
+                print(f"{space}Please enter a valid type")
         new_row.append(new_type)
         new_temp = temp + "°C"
         new_row.append(new_temp)
@@ -100,7 +101,7 @@ def load_project(user_email):
         project_sheet.append_row(new_row)
         
 def calculate_capacity(new_type, new_insulation, new_volume, new_floor):
-    print("Calculating Capacity....")
+    print(f"{space}Calculating Capacity....\n")
 
     temp_ranges = {"Kitchen": 2, "Beverages": 6, "Deepfreeze": -18}
     base_and_steps = {(6, "70mm"): (455, 5.4), (2, "70mm"): (565, 6.4), (-18, "100mm"): (630, 7.2), 
@@ -113,7 +114,7 @@ def calculate_capacity(new_type, new_insulation, new_volume, new_floor):
         new_insulation = "100mm"
 
     if (temp_range, new_insulation) not in base_and_steps:
-        print(f"Unknown temp range and insulation combination: {temp_range}, {new_insulation}")
+        print(f"{space}Unknown temp range and insulation combination: {temp_range}, {new_insulation}")
         return
 
     base, step = base_and_steps[(temp_range, new_insulation)]
@@ -123,7 +124,7 @@ def calculate_capacity(new_type, new_insulation, new_volume, new_floor):
         capacity *= 1.2
     capacity = round(capacity, 1)
 
-    print(f"The required capacity for the {new_type} Coldroom with a Volume of {new_volume}m³ is {capacity} kW")
+    print(f"{space}The required capacity for the {new_type} Coldroom with a Volume of {new_volume}m³ is {capacity} kW\n")
     return capacity
     
 
@@ -131,48 +132,48 @@ def calculate_capacity(new_type, new_insulation, new_volume, new_floor):
 
         
 def insulsulated_floor():
-    print("* Please choose if the Coldroom has an Insulated Floor *")
+    print(f"{space}* Please choose if the Coldroom has an Insulated Floor *\n")
     while True:
         try:
-            insulated = input("[y]: Yes or [n]: No: ")
+            insulated = input("      [y]: Yes or [n]: No: ")
             if insulated == "y":
                 return "Yes"
             elif insulated == "n":
                 return "No"
             else:
-                print("Please enter a valid option")
+                print(f"{space}Please enter a valid option\n")
         except ValueError as e:
-            print(f"{e} is not valid. Please enter a valid option") 
+            print(f"{space}{e} is not valid. Please enter a valid option\n") 
             
             
                   
 def insulation_thickness(): 
-    print("* Please choose the Insulation Thickness *")
+    print(f"{space}* Please choose the Insulation Thickness *\n")
     while True:
         try:
-            insulation = input("[a]: 70mm or [b]: 100mm: ")
+            insulation = input(f"{space}[a]: 70mm or [b]: 100mm: \n")
             if insulation == "a":
                 return "70mm"
             elif insulation == "b":
                 return "100mm"
             else:
-                print("Please enter a valid option")
+                print(f"{space}Please enter a valid option\n")
         except ValueError as e:
-            print(f"{e} is not a number. Please enter a valid number")
+            print(f"{space}{e} is not a number. Please enter a valid number\n")
     
     
     
           
 def calc_volume():
-    print(" * Please enter the dimensions of the Coldroom in Meters *")
+    print(f"{space} * Please enter the dimensions of the Coldroom in Meters *\n")
     while True:
         try:
-            height = float(input("Height: "))
-            width = float(input("Width: "))
-            length = float(input("Length: "))
+            height = float(input(f"{space}Height: \n"))
+            width = float(input(f"{space}Width: \n"))
+            length = float(input(f"{space}Length: \n"))
             break
         except ValueError as e:
-            print(f"{e} is not a number. Please enter a valid number")
+            print(f"{e} is not a number. Please enter a valid number\n")
     
     return round(height * width * length, 1)
     
@@ -200,37 +201,33 @@ def check_email_registered():
             mail = email_address.col_values(1)
             
         except:
-            print("Sorry an error has occurred.\n Please contact support.\n www.ccc@cold-calc.freeze")
+            print(f"{space}Sorry an error has occurred.\n Please contact support.\n www.ccc@cold-calc.freeze\n")
             break
         
         # Print the title 
-        title = pyfiglet.figlet_format("          * * * *", font = "5lineoblique" ) 
-        print(Fore.BLUE + f"{title}" + Style.RESET_ALL + "          * Welcome to the Coldroom Calculator * \n")    
+        title = pyfiglet.figlet_format("* * * *", font = "5lineoblique" ) 
+        print(Fore.BLUE + space, title + Style.RESET_ALL + f"{space}* Welcome to the Coldroom Calculator * \n")    
         
         # get user email and check if they are registered, quit or open the register module
-        user_email = input("      Please enter your registered email address,\n or Enter: \n [r] to register.\n [i] for more information\n [q] to quit: \n")
+        user_email = input(f"{space}Please enter your registered email address,\n or Enter: \n [r] to register.\n [i] for more information\n [q] to quit: \n")
         user_email = user_email.lower().strip()
         if user_email in mail:
-            print("      Loading your Projects......\n")
+            print(f"{space}Loading your Projects......\n")
             load_project(user_email)
             break
-           
-            
-            
-            break
         elif user_email == "i":
-            print("      Loading info page...... \n")
+            print(f"{space}Loading info page...... \n")
             instruction_page()
             break
         elif user_email == "q":
-            print("      See you soon, Stay Cool")
+            print(f"{space}See you soon, Stay Cool\n")
             break
         elif user_email == "r":
-            print("      Loading the register page.......")
+            print(f"{space}Loading the register page.......\n")
             register_user(mail)
             break
         else:
-            print(f"      {user_email} is not registered. \n Please try again\n")
+            print(f"{space}{user_email} is not registered. \n Please try again\n")
 
 def instruction_page():
     while True:
@@ -239,20 +236,32 @@ you get peak performance from commercial refrigeration systems.\n
 The power capacity of newly installed systems must match the demand\n
 to keep you and your customers happy.\n
 This tool is the place to start.\n
+Please enter an email address to get started.\n
+
+choose a user name and start a new project.\n
+
 Step 1: Enter the desired Temperature in celsinn Panels \n
         Industry Standard A: 70mm or B: 100mm \n
-                                
+        
+Step 2: Enter the Dimensions of the Coldroom in Meters. \n
+        Height, Width and Length \n
+        
+Step 3: Select the thickness of the Insulation Panels \n
+        A: 70mm B: 100mm \n
+                         
 Step 4: Enter whether or not the Coldroom has an insulated floor:\n
         A: Yes B: No \n
                                 
 Step 5: The Coldroom Capacity Calculator then calculates the required\n
 refrigeration capacity needed in Kilo-Watts.\n
+
 Allowing you to select the appropriate equipment\n
 for inatallation. \n
+
   Please bear in mind that any results are merely suggestions. \n
                         """
-        print(instructions)
-        back = input("Enter [b] to go back: ")
+        print(space, instructions)
+        back = input(f"{space}Enter [b] to go back: ")
         if back.strip() == "b":
             clear()
             check_email_registered()
@@ -268,18 +277,18 @@ def register_user(mail):
     """
     clear()
     while True:
-        new_user_email = input("Please enter your email address to register: \n or enter [b] to go back.\n")
+        new_user_email = input(f"{space}Please enter your email address to register: \n or enter [b] to go back.\n")
         try:
            valid_new_user_email = validate_email(new_user_email,check_deliverability = False)
-           print(f"{valid_new_user_email } is a valid email.")
+           print(f"{space}{valid_new_user_email } is a valid email.")
            new_email_check(new_user_email, mail)
            break
            
         except EmailNotValidError:  
-            print(f"{new_user_email} is not a valid email address.")
+            print(f"{space}{new_user_email} is not a valid email address.")
         if new_user_email.strip() == "b":
             clear()
-            print("Going back.....")
+            print(f"{space}Going back.....")
             check_email_registered()
             break
                 
@@ -289,8 +298,8 @@ def new_email_check(new_user_email, mail):
     Checks to see if the entered email is already in use
     """
     if new_user_email in mail:
-        print("The email addrress you entered is already in use. \n")
-        print("Please use a different email or login \n")
+        print(f"{space}The email addrress you entered is already in use. \n")
+        print(f"{space}Please use a different email or login \n")
         check_email_registered()
         
     else:
@@ -300,19 +309,19 @@ def new_email_check(new_user_email, mail):
 def create_new_user_name(new_email):
     while True:
         
-        new_user_name = input("Please enter a new user name(no more than 8 characters): \n")
+        new_user_name = input(f"{space}Please enter a new user name(no more than 8 characters): \n")
         new_user_name.strip().replace(' ', '-')
         if len(new_user_name) <= 8:
             SHEET.add_worksheet(title = new_email, rows=100, cols=20)
             worksheet_to_update = SHEET.worksheet(new_email)
             worksheet_to_update.append_row([new_user_name, "Project", "Type", "Temperature", "Volume", "Insulation", "Insulated Floor", "Capacity in kW"])
-            print(f"{new_user_name} welcome to the Coldroom Capacity Calculator. ")
-            print(f"{new_email} is your registered email.")
-            print("Loading Projects......")
+            print(f"{space}{new_user_name} welcome to the Coldroom Capacity Calculator. ")
+            print(f"{space}{new_email} is your registered email.")
+            print(f"{space}Loading Projects......")
             load_project(new_email)
             break
         else:
-             print("Your username cannot be bigger than 8 characters!")
+             print(f"{space}Your username cannot be bigger than 8 characters!")
                    
     
 check_email_registered()
