@@ -204,14 +204,14 @@ def check_email_registered():
             break
         
         # Print the title 
-        title = pyfiglet.figlet_format("         * * * *", font = "5lineoblique" ) 
-        print(Fore.BLUE + f"{title}" + Style.RESET_ALL + "* Welcome to the Coldroom Calculator * \n")    
+        title = pyfiglet.figlet_format("          * * * *", font = "5lineoblique" ) 
+        print(Fore.BLUE + f"{title}" + Style.RESET_ALL + "          * Welcome to the Coldroom Calculator * \n")    
         
         # get user email and check if they are registered, quit or open the register module
-        user_email = input("Please enter your registered email address,\n or Enter: \n [r] to register.\n [i] for more information\n [q] to quit: \n")
+        user_email = input("      Please enter your registered email address,\n or Enter: \n [r] to register.\n [i] for more information\n [q] to quit: \n")
         user_email = user_email.lower().strip()
         if user_email in mail:
-            print("Loading your Projects......\n")
+            print("      Loading your Projects......\n")
             load_project(user_email)
             break
            
@@ -219,18 +219,18 @@ def check_email_registered():
             
             break
         elif user_email == "i":
-            print("Loading info page...... \n")
+            print("      Loading info page...... \n")
             instruction_page()
             break
         elif user_email == "q":
-            print("See you soon, Stay Cool")
+            print("      See you soon, Stay Cool")
             break
         elif user_email == "r":
-            print("Loading the register page.......")
+            print("      Loading the register page.......")
             register_user(mail)
             break
         else:
-            print(f"{user_email} is not registered. \n Please try again\n")
+            print(f"      {user_email} is not registered. \n Please try again\n")
 
 def instruction_page():
     while True:
