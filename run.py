@@ -205,7 +205,7 @@ def check_email_registered():
             break
         
         # Print the title 
-        title = pyfiglet.figlet_format("* * * *", font = "5lineoblique" ) 
+        title = pyfiglet.figlet_format("* * * * * * * * * *", font = "5lineoblique" ) 
         print(Fore.BLUE + space, title + Style.RESET_ALL + f"{space}* Welcome to the Coldroom Calculator * \n")    
         
         # get user email and check if they are registered, quit or open the register module
