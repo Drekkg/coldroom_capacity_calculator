@@ -63,7 +63,9 @@ def load_project(user_email):
             new_name = input(f"{space}Enter a new project name or [b] to go back:  \n")
             if new_name == "b":
                 check_email_registered()
-                break
+            elif new_name.strip() == "":
+                print("Please enter a valid project name: \n")
+                continue
             else:
                 new_row.append(new_name)
             while True:
@@ -96,8 +98,7 @@ def load_project(user_email):
             new_row.append(new_floor)
             
             capacity = calculate_capacity(new_type, new_insulation, new_volume, new_floor)
-            new_row.append(str(capacity) +" kW")
-            
+            new_row.append(str(capacity) +" kW") 
             project_sheet.append_row(new_row)
             
          
