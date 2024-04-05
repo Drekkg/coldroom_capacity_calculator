@@ -7,7 +7,7 @@ from google.oauth2.service_account import Credentials
 import os
 from email_validator import validate_email, EmailNotValidError
 from colorama import Fore, Style
-from pprint import pprint
+
 
 
 
@@ -63,12 +63,13 @@ def load_project(user_email):
             new_name = input(f"{space}Enter a new project name or [b] to go back:  \n")
             if new_name == "b":
                 check_email_registered()
+                break
             elif new_name.strip() == "":
                 print("Please enter a valid project name: \n")
                 continue
             else:
                 new_row.append(new_name)
-            while True:
+                
                 new_type = input(f"{space}Please enter the Type.\n [k] for Kitchen 2°C\n [b] for Beverages 6°C or \n [d] for Deepfreeze\n")
                 if new_type.strip() == 'k':
                     new_type = "Kitchen"
@@ -293,13 +294,13 @@ def new_email_check(new_user_email, mail):
         print(f"{space}Please use a different email or login \n")
         check_email_registered()
         
+        
     else:
         SHEET.worksheet("email").append_row([new_user_email])
         create_new_user_name(new_user_email)  
                 
 def create_new_user_name(new_email):
     while True:
-        
         new_user_name = input(f"{space}Please enter a new user name(no more than 8 characters): \n{space}")
         new_user_name.strip().replace(' ', '-')
         if len(new_user_name) <= 8 and len(new_user_name) > 0:
