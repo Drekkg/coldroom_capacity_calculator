@@ -82,7 +82,7 @@ def load_project(user_email):
         # if project_display:
         print("Your Projects: \n")
         for i in range(1, len(project_display)):
-            print(f"User: {project_display[0][0]} || Project: {project_display[i][1]} || Type: {project_display[i][2]} || Temperature: {project_display[i][3]} || Volume: {project_display[i][4]} || Insulation {project_display[i][5]} || Insulated Floor {project_display[i][6]} || Capacity {project_display[i][7]} ||\n")
+            print(f" || User: {project_display[0][0]} || Project: {project_display[i][1]} || Type: {project_display[i][2]} || Temperature: {project_display[i][3]} ||    Volume: {project_display[i][4]} || Insulation {project_display[i][5]} || Insulated Floor {project_display[i][6]} || Capacity {project_display[i][7]} ||\n")
         # else:
         #     print(f"{space}Please create a new project...... \n")             
         leave = input(f"{space} Enter [c] to create a project or[b] to go back \n")
