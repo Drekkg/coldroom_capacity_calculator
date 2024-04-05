@@ -215,7 +215,7 @@ def check_email_registered():
 
         # get user email and check if they are registered, quit or open the register module  # noqa
         user_email = input(
-            f"{space}Please enter your registered email address,\n {space}or enter: \n [r] to register.\n [i] for more  # noqa information\n [q] to quit: \n{space}"
+            f"{space}Please enter your registered email address,\n {space}or enter: \n [r] to register.\n [i] for more information\n [q] to quit: \n{space}"  # noqa
         )
         user_email = user_email.lower().strip()
         if user_email in mail:
