@@ -35,76 +35,6 @@ def clear():
     Function to clear the console
     """
     os.system("cls" if os.name == "nt" else "clear")
-    
-
-
-# def load_project(user_email):
-#         """
-#         Load the project and display the project menu
-#         """
-#         clear()
-       
-#         title = pyfiglet.figlet_format("* * * * * *", font = "5lineoblique" ) 
-#         print(Fore.BLUE + f"{space}{title}" + Style.RESET_ALL + f" * {user_email} Welcome to your project Page * \n") 
-       
-#         project_sheet = SHEET.worksheet(user_email)
-#         project_display = project_sheet.get_all_values()
-        
-        
-#         while True:
-#             if project_display:
-#                 print("Your Projects: \n")
-#                 for i in range(1, len(project_display)):
-#                     print(f"User: {project_display[0][0]} Project: {project_display[i][1]} Type: {project_display[i][2]} Temperature: {project_display[i][3]} Volume: {project_display[i][4]} Insulation {project_display[i][5]} Insulated Floor {project_display[i][6]} Capacity {project_display[i][7]} \n")
-                
-#             else:
-#                 print(f"{space}Please create a new project...... \n")             
-#             new_row = [""]
-#             new_name = input(f"{space}Enter a new project name or [b] to go back:  \n")
-#             if new_name == "b":
-#                 check_email_registered()
-#                 break
-#             elif new_name.strip() == "":
-#                 print("Please enter a valid project name: \n")
-#                 continue
-#             else:
-#                 new_row.append(new_name)
-#                 break
-#         while True:        
-#             new_type = input(f"{space}Please enter the Type.\n [k] for Kitchen 2°C\n [b] for Beverages 6°C or \n [d] for Deepfreeze\n")
-#             if new_type.strip() == 'k':
-#                 new_type = "Kitchen"
-#                 temp = "2"
-#                 break
-#             elif new_type.strip() == 'b':
-#                 new_type = "Beverages"
-#                 temp = "6"
-#                 break
-#             elif new_type.strip() == 'd':
-#                 new_type = "Deepfreeze"
-#                 temp = "-18"
-                
-#             else:
-#                 print(f"{space}Please enter a valid type")
-#                 continue
-                
-#         new_row.append(new_type)
-#         new_temp = temp + "°C"
-#         new_row.append(new_temp)
-
-#         new_volume = calc_volume()
-#         new_row.append(str(new_volume)+ "m³")
-
-#         new_insulation = insulation_thickness()
-#         new_row.append(new_insulation)
-
-#         new_floor = insulsulated_floor()
-#         new_row.append(new_floor)
-
-#         capacity = calculate_capacity(new_type, new_insulation, new_volume, new_floor)
-#         new_row.append(str(capacity) +" kW") 
-#         project_sheet.append_row(new_row)
-        
 def get_project_type():
     while True:
         new_type = input(f"{space}Please enter the Type.\n [k] for Kitchen 2°C\n [b] for Beverages 6°C or \n [d] for Deepfreeze\n")
@@ -119,11 +49,8 @@ def get_project_type():
 
 def create_project():
     new_row = [""]
-    new_name = input(f"{space}Enter a new project name or [b] to go back:  \n")
-    if new_name == "b":
-        check_email_registered()
-        return
-    elif new_name.strip() == "":
+    new_name = input(f"{space}Enter a new project name:  \n")
+    if new_name.strip() == "":
         print("Please enter a valid project name: \n")
         return
     else:
@@ -149,23 +76,25 @@ def load_project(user_email):
     clear()
     title = pyfiglet.figlet_format("* * * * * *", font = "5lineoblique" ) 
     print(Fore.BLUE + f"{space}{title}" + Style.RESET_ALL + f" * {user_email} Welcome to your project Page * \n") 
-    project_sheet = SHEET.worksheet(user_email)
-    project_display = project_sheet.get_all_values()
     while True:
-        if project_display:
-            print("Your Projects: \n")
-            for i in range(1, len(project_display)):
-                print(f"User: {project_display[0][0]} Project: {project_display[i][1]} Type: {project_display[i][2]} Temperature: {project_display[i][3]} Volume: {project_display[i][4]} Insulation {project_display[i][5]} Insulated Floor {project_display[i][6]} Capacity {project_display[i][7]} \n")
-        else:
-            print(f"{space}Please create a new project...... \n")             
+        project_sheet = SHEET.worksheet(user_email)
+        project_display = project_sheet.get_all_values()
+        # if project_display:
+        print("Your Projects: \n")
+        for i in range(1, len(project_display)):
+            print(f"User: {project_display[0][0]} Project: {project_display[i][1]} Type: {project_display[i][2]} Temperature: {project_display[i][3]} Volume: {project_display[i][4]} Insulation {project_display[i][5]} Insulated Floor {project_display[i][6]} Capacity {project_display[i][7]} \n")
+        # else:
+        #     print(f"{space}Please create a new project...... \n")             
         leave = input(f"{space} Enter [c] to create a project or[b] to go back \n")
         if leave == "b":
             check_email_registered()
             break
         elif leave == "c":
             new_row = create_project()
-            if new_row:
-                project_sheet.append_row(new_row)
+        else:
+            print(f"{space} Enter a valid option....")
+        if new_row:
+            project_sheet.append_row(new_row)
             
          
         
