@@ -1,8 +1,5 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+https://docs.google.com/spreadsheets/d/1xNUrY7ALB5eUbRxFl2gEivpw_ls5vIgMhYI6hoLTZX0/edit?usp=sharing
 
-Welcome USER_NAME,
-
-This is the Code Institute student template for deploying your third portfolio project, the Python command-line project. The last update to this file was: **August 17, 2021**
 
 ## Reminders
 
