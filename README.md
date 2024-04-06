@@ -127,7 +127,8 @@ Working with google sheets was also extremely challenging
 
 ### Outstanding Defects
 
-No outstanding bugs known
+Spreadsheeet not found exception is not working as expected.
+A future feature to be implemented
 
 
 # Deployment
@@ -221,6 +222,7 @@ B. Deploy either manual or automatic
 ### Content
  - Code Institute - Love Sandwiches project (Google API connection instructions)
  - Stackoverflow for code explanations debugging
+ - gspread documentation
 
  
 
