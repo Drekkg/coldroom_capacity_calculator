@@ -213,7 +213,7 @@ def check_email_registered():
             email_address = SHEET.worksheet("email")
             mail = email_address.col_values(1)
 
-        except:
+        except gspread.exceptions.SpreadsheetNotFound:
             print(
                 f"{space}Sorry an error has occurred.\n Please contact support.\n www.ccc@cold-calc.freeze\n"  # noqa
             )
