@@ -207,6 +207,17 @@ def check_email_registered():
     Checks if user is registered
     """
     while True:
+        # try statement to check if worksheet exists otherwise break and show error message  # noqa
+        # including support website link
+        try:
+            email_address = SHEET.worksheet("email")
+            mail = email_address.col_values(1)
+
+        except:
+            print(
+                f"{space}Sorry an error has occurred.\n Please contact support.\n www.ccc@cold-calc.freeze\n"  # noqa
+            )
+            break
 
         # Print the title
         title = pyfiglet.figlet_format("* * * * * * ", font="5lineoblique")
@@ -218,6 +229,7 @@ def check_email_registered():
         )
 
         # get user email and check if they are registered, quit or open the register module  # noqa
+
         user_email = input(
             f"{space}Please enter your registered email address,\n {space}or enter: \n [r] to register.\n [i] for more information\n [q] to quit: \n{space}"  # noqa
         )
