@@ -5,7 +5,7 @@ The Cold Room Capacity Calculator is a Python program that calculates the capaci
 
 Program in action (please use the full screen for better quality):
 
-https://user-images.githubusercontent.com/114284732/213212675-34349d57-329d-4501-8e51-d8241b100b53.mp4
+https://github.com/Drekkg/coldroom_capacity_calculator/assets/77752848/65eb34f8-12fb-453e-92f6-0db3b7743e1a
 
 
 ## Live Site
