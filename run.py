@@ -33,7 +33,6 @@ def clear():
     """
     os.system("cls" if os.name == "nt" else "clear")
 
-
 def get_project_type():
     while True:
         new_type = input(
@@ -138,7 +137,7 @@ def calculate_capacity(new_type, new_insulation, new_volume, new_floor):
     capacity = round(capacity, 1)
 
     print(
-        f"{space}The required capacity for the {new_type} Coldroom with a Volume of {new_volume}m³ is {capacity} kW\n"  # noqa
+        f"{space}The required capacity for the {new_type} Coldroom \n {space} with a Volume of {new_volume}m³ is {capacity} kW\n"  # noqa
     )
     return capacity
 
@@ -239,7 +238,7 @@ def check_email_registered():
 
 def instruction_page():
     while True:
-        instructions = """The 'Coldroom Capacity Calculator' is a tool designed to help \n  # noqa
+        instructions = """The 'Coldroom Capacity Calculator' is a tool designed to help \n  
 you get peak performance from commercial refrigeration systems.\n
 The power capacity of newly installed systems must match the demand\n
 to keep you and your customers happy.\n
@@ -264,7 +263,7 @@ Step 5: The Coldroom Capacity Calculator then calculates the required\n
 refrigeration capacity needed in Kilo-Watts.\n
 
 Allowing you to select the appropriate equipment\n
-for inatallation. \n
+for installation. \n
 
   Please bear in mind that any results are merely suggestions. \n
                         """
