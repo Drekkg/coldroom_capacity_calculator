@@ -167,15 +167,15 @@ To set this up we need to:
 18. click on the Add Key dropdown and select Create New Key
 19. select JSON and then click Create. This will trigger the json file with your API credentials in it to download to your machine. We must copy this file to our GitPod library and also will need this to deploy our project to Heroku
 
-### Gitpod
+### VS Code
 
-1. to run the program in GitPod we need to copy creds.json file:
+1. to run the program in VS Code we need to copy creds.json file:
 
 ![image](images/cred.json.png)
 
 2. install all libraries from requirements.txt (pip3 install -r requirements.txt)
 
-![image](https://user-images.githubusercontent.com/114284732/213477292-7ecd8c43-d3ad-4b4a-8091-3b891612afc1.png)
+![image](images/requirements.png)
 
 3. run command "python3 run.py" in terminal
 
@@ -209,15 +209,24 @@ B. Deploy either manual or automatic
 
 
 ## Credits
+- Schiessl Refrigeration - for the Calculations
+- Pyfiglet - for Logo
+- os - for clear screen function
+- email validator - for email validation
+- colorama - for the colour(Logo)
+- Google Sheets
+ 
 
-- 
 
 ### Content
  - Code Institute - Love Sandwiches project (Google API connection instructions)
+ - Stackoverflow for code explanations debugging
+
+ 
 
 
 ### Acknowledgments
+Malia Havlicek my Mentor.
 
 
 
-https://pep8ci.herokuapp.com/ - code validation tool
