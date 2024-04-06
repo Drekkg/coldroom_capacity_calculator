@@ -216,7 +216,7 @@ B. Deploy either manual or automatic
 - email validator - for email validation
 - colorama - for the colour(Logo)
 - Google Sheets
- 
+ - Dia for flowchart
 
 
 ### Content
