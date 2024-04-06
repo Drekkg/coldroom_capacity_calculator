@@ -43,8 +43,8 @@ They then create a new project and input the relevant information:
    [y] or [n]
 6. The program then prints out the required capacity in Kilowatts and stores 
    all the relevant information in the users spreadsheet.
-7. All the users projects are the printed on the screen.
-8. The user is then prompted to either create another project or go back and quit the program.
+7. All the users projects are then printed on the screen.
+8. The user is prompted to either create another project or go back and quit the program.
 
 ## Features
 
@@ -57,8 +57,8 @@ They then create a new project and input the relevant information:
       Email Validation
       Empty string checks
       Whitespace and lower and capital checking
-      Single letter are checked and validated.
-      All incorrect inputs are printed to the screen.
+      Single letter inputs are checked and validated.
+      All incorrect inputs are brought to the users attention.
       The program strives to create a positive user experience.
       Where appropriate the option to go back or quit the program.
 - The ability to call up and view previous calculations using an online spreadsheeet.
@@ -122,7 +122,8 @@ Email validation, single letter inputs only select corresponding letters, number
 Many bugs were found and dealt with during development.
 
 ### Defects of Note
-Getting the data to align and look halfway good on the comman line was extremly challenging.
+Getting the data to align and look halfway good on the command line was extremly challenging.
+Working with google sheets was also extremely challenging
 
 ### Outstanding Defects
 

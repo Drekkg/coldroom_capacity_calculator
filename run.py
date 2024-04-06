@@ -33,7 +33,11 @@ def clear():
     """
     os.system("cls" if os.name == "nt" else "clear")
 
+
 def get_project_type():
+    """
+    gets type of coldroom from user input
+    """
     while True:
         new_type = input(
             f"{space}Please enter the Type.\n [k] for Kitchen 2°C\n [b] for Beverages 6°C or \n [d] for Deepfreeze\n"  # noqa
@@ -49,6 +53,9 @@ def get_project_type():
 
 
 def create_project():
+    """
+    creates a new project and stores it in the spreadsheet
+    """
     new_row = [""]
     new_name = input(f"{space}Enter a new project name:  \n")
     if new_name.strip() == "":
@@ -143,13 +150,16 @@ def calculate_capacity(new_type, new_insulation, new_volume, new_floor):
 
 
 def insulsulated_floor():
+    """
+    checks if coldroom has an insulated floor from user input
+    """
     print(f"{space}* Please choose if the Coldroom has an Insulated Floor *\n")
     while True:
         try:
             insulated = input("      [y]: Yes or [n]: No: ")
             if insulated.strip().lower() == "y":
                 return "Yes"
-            elif insulated.strip().lower()== "n":
+            elif insulated.strip().lower() == "n":
                 return "No"
             else:
                 print(f"{space}Please enter a valid option\n")
@@ -158,6 +168,9 @@ def insulsulated_floor():
 
 
 def insulation_thickness():
+    """
+    gets the insulation thickness fom the user
+    """
     print(f"{space}* Please choose the Insulation Thickness *\n")
     while True:
         try:
@@ -173,6 +186,9 @@ def insulation_thickness():
 
 
 def calc_volume():
+    """
+    calculates the volume in M³
+    """
     print(f"{space} * Please enter the dimensions of the Coldroom in Meters *\n")  # noqa
     while True:
         try:
@@ -191,17 +207,6 @@ def check_email_registered():
     Checks if user is registered
     """
     while True:
-        # try statement to check if worksheet exists otherwise break and show error message  # noqa
-        # including support website link
-        try:
-            email_address = SHEET.worksheet("email")
-            mail = email_address.col_values(1)
-
-        except FileNotFound:
-            print(
-                f"{space}Sorry an error has occurred.\n Please contact support.\n www.ccc@cold-calc.freeze\n"  # noqa
-            )
-            break
 
         # Print the title
         title = pyfiglet.figlet_format("* * * * * * ", font="5lineoblique")
@@ -237,8 +242,12 @@ def check_email_registered():
 
 
 def instruction_page():
+    """
+    prints user instructions to the page
+    """
     while True:
-        instructions = """The 'Coldroom Capacity Calculator' is a tool designed to help \n  
+        instructions = """'The Coldroom Capacity Calculator'\n
+is a tool designed to help \n
 you get peak performance from commercial refrigeration systems.\n
 The power capacity of newly installed systems must match the demand\n
 to keep you and your customers happy.\n
@@ -249,16 +258,16 @@ choose a user name and start a new project.\n
 
 Step 1: Enter the desired Temperature in celsius \n
         2°C for Kitchen 6°C for Beverages -18 for Deep Freeze\n
-        
+
 Step 2: Enter the Dimensions of the Coldroom in Meters. \n
         Height, Width and Length \n
-        
+
 Step 3: Select the thickness of the Insulation Panels \n
         A: 70mm B: 100mm \n
-                         
+
 Step 4: Enter whether or not the Coldroom has an insulated floor:\n
         A: Yes B: No \n
-                                
+
 Step 5: The Coldroom Capacity Calculator then calculates the required\n
 refrigeration capacity needed in Kilo-Watts.\n
 
@@ -316,6 +325,10 @@ def new_email_check(new_user_email, mail):
 
 
 def create_new_user_name(new_email):
+    """
+    creates and stores the inputted email.
+    creates new spreadsheet with headings
+    """
     while True:
         new_user_name = input(
             f"{space}Please enter a new user name(no more than 8 characters): \n{space}"  # noqa
