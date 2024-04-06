@@ -52,8 +52,7 @@ They then create a new project and input the relevant information:
 
 - Logo on "Welcome Screen" and "Project Screeen" stylized by pyfiglet
 
-https://user-images.githubusercontent.com/114284732/213211886-7e7a4867-eb4a-429e-898b-91bb016690bd.mp4
-
+![image](images/logo.png)
 - The program has extensive input checking: 
       Email Validation
       Empty string checks
