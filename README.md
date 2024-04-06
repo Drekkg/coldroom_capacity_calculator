@@ -122,7 +122,7 @@ Email validation, single letter inputs only select corresponding letters, number
 Many bugs were found and dealt with during development.
 
 ### Defects of Note
-Getting the datta to align and look halfway good on the comman line was extremly challenging.
+Getting the data to align and look halfway good on the comman line was extremly challenging.
 
 ### Outstanding Defects
 
@@ -181,12 +181,7 @@ To set this up we need to:
 
 ### Heroku
 
-1. Fork the repository
-   Make a fork so you have a copy of the repository in your own git hub account:
-   https://github.com/PPindel/bac-calculator
-   Instructions how to fork can be found here:
-   https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository
-
+1. log into GitHub
 2. Log into Heroku and create new app (the name of the app must be unique):
 
 ![image](https://user-images.githubusercontent.com/114284732/213482351-4b89aa2f-5c07-4369-903b-64dba4f3dd95.png)
@@ -214,13 +209,7 @@ B. Deploy either manual or automatic
 
 ## Credits
 
-- Art O'Coileain from TU Dublin Tallaght - BAC formula and project idea
-- https://www.geeksforgeeks.org/ - how to use pyfiglet and colorama
-- https://pypi.org - how to use pandas library
-- https://stackoverflow.com/ - code solutions
-- https://www.w3schools.com/ - code solutions
-- [Code Institute Template](https://github.com/Code-Institute-Org/python-essentials-template)
-- The Template for the GUI for this project was provided by Code Institute. This allows for the Command line to be shown and used within the browser.
+- 
 
 ### Content
  - Code Institute - Love Sandwiches project (Google API connection instructions)
@@ -228,6 +217,6 @@ B. Deploy either manual or automatic
 
 ### Acknowledgments
 
-Big thanks to Malia Havlicek - Code Institute mentor for her ideas and support in this project! Also, I would like to thank all my friends for live testing the program!
+
 
 https://pep8ci.herokuapp.com/ - code validation tool
