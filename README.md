@@ -89,7 +89,7 @@ They then create a new project and input the relevant information:
 
 ## Flow Chart
 
-
+![image](images/flow_chart.png)
 
 
 
