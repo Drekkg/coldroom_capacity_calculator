@@ -1,6 +1,3 @@
-https://docs.google.com/spreadsheets/d/1xNUrY7ALB5eUbRxFl2gEivpw_ls5vIgMhYI6hoLTZX0/edit?usp=sharing
-
-
 # Coldroom Capacity Calculator
 The Cold Room Capacity Calculator is a Python program that calculates the capacity of a cold room based on the dimensions of the room and the type of product stored in it. The program is designed to help designers and installers of refrigeration systems determine the power/capacity of the equipment they need to install according to size and temperature of the room and,  the type of product stored in it.
 
