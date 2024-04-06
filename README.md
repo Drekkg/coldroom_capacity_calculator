@@ -128,7 +128,10 @@ Working with google sheets was also extremely challenging
 ### Outstanding Defects
 
 Spreadsheeet not found exception is not working as expected.
-A future feature to be implemented
+A future feature to be implemented.
+Program sometimes disconnects from 
+gspread. Causing an error and crashing the program.
+Error are to be handled in a future feature
 
 
 # Deployment
