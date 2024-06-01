@@ -73,7 +73,9 @@ def create_project():
     new_row.append(new_insulation)
     new_floor = insulsulated_floor()
     new_row.append(new_floor)
-    capacity = calculate_capacity(new_type, new_insulation, new_volume, new_floor)  # noqa
+    capacity = calculate_capacity(
+        new_type, new_insulation, new_volume, new_floor
+    )  # noqa
     new_row.append(str(capacity) + " kW")
     return new_row
 
@@ -99,7 +101,9 @@ def load_project(user_email):
                 f"|| User: {project_display[0][0]} || Project: {project_display[i][1]} || Type: {project_display[i][2]} || Temperature: {project_display[i][3]} \n||    Volume: {project_display[i][4]} || Insulation: {project_display[i][5]} || Insulated Floor: {project_display[i][6]} \n|| Capacity {project_display[i][7]} ||\n"  # noqa
             )
 
-        leave = input(f"{space} Enter [c] to create a project or[b] to go back \n")  # noqa
+        leave = input(
+            f"{space} Enter [c] to create a project or[b] to go back \n"
+        )  # noqa
         if leave.strip().lower() == "b":
             check_email_registered()
             break
@@ -137,11 +141,13 @@ def calculate_capacity(new_type, new_insulation, new_volume, new_floor):
         return
 
     base, step = base_and_steps[(temp_range, new_insulation)]
+
     capacity = base + (step * (new_volume * 10))
 
     if new_floor == "No":
         capacity *= 1.2
-    capacity = round(capacity, 1)
+
+    capacity = round(capacity / 1000, 1)
 
     print(
         f"{space}The required capacity for the {new_type} Coldroom \n {space} with a Volume of {new_volume}m³ is {capacity} kW\n"  # noqa
@@ -189,7 +195,9 @@ def calc_volume():
     """
     calculates the volume in M³
     """
-    print(f"{space} * Please enter the dimensions of the Coldroom in Meters *\n")  # noqa
+    print(
+        f"{space} * Please enter the dimensions of the Coldroom in Meters *\n"
+    )  # noqa
     while True:
         try:
             height = float(input(f"{space}Height: \n"))
@@ -250,7 +258,9 @@ def check_email_registered():
             register_user(mail)
             break
         else:
-            print(f"{space}{user_email} is not registered. \n Please try again\n")  # noqa
+            print(
+                f"{space}{user_email} is not registered. \n Please try again\n"
+            )  # noqa
 
 
 def instruction_page():
@@ -369,7 +379,9 @@ def create_new_user_name(new_email):
             load_project(new_email)
             break
         else:
-            print(f"{space}Your username cannot be bigger than 8 characters or empty!")  # noqa
+            print(
+                f"{space}Your username cannot be bigger than 8 characters or empty!"
+            )  # noqa
 
 
 check_email_registered()
